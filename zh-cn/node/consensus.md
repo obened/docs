@@ -8,16 +8,16 @@
 
 * **拜占庭错误** `BF` 一个节点保持功能，但以不诚实甚至是恶意的方式来工作。
 
-* **dBFT（一种改进的拜占庭容错算法）** `dBFT` 小蚁区块链中的共识算法，该算法通过多个共识节点的协商来达成共识，有良好的可用性和最终性。
+* **dBFT（一种改进的拜占庭容错算法）** `dBFT` NEO区块链中的共识算法，该算法通过多个共识节点的协商来达成共识，有良好的可用性和最终性。
 
 * **视图** `V` 在dBFT算法中，一次共识从开始到结束所使用的数据集合，称为视图。
 
 ## 2 - 规则
-**在小蚁的共识算法中，共识节点由小蚁股持有人股票选出，并对区块链中交易的有效性进行验证。过去这些节点被称作“记账人”，现在他们被称作“共识节点”**
+**在NEO的共识算法中，共识节点由NEO持有人股票选出，并对区块链中交易的有效性进行验证。过去这些节点被称作“记账人”，现在他们被称作“共识节点”**
 
-  - <img style="vertical-align: middle" src="assets/nNode.png" width="25"> **共识节点** —— 此节点参与共识行为。 在共识行为中, 共识节点轮流担任以下两个角色：
-  - <img style="vertical-align: middle" src="assets/speakerNode.png" width="25"> **议长** `（一人）` —— **议长** 负责向系统发送一个新的区块的提案。
-  - <img style="vertical-align: middle" src="assets/cNode.png" width="25"> **议员** `（多人）` —— **议员** 负责对议长的提案进行投票，大于等于2/3的议员投票时，提案通过。
+  - <img style="vertical-align: middle" src="/assets/nNode.png" width="25"> **共识节点** —— 此节点参与共识行为。 在共识行为中, 共识节点轮流担任以下两个角色：
+  - <img style="vertical-align: middle" src="/assets/speakerNode.png" width="25"> **议长** `（一人）` —— **议长** 负责向系统发送一个新的区块的提案。
+  - <img style="vertical-align: middle" src="/assets/cNode.png" width="25"> **议员** `（多人）` —— **议员** 负责对议长的提案进行投票，大于等于2/3的议员投票时，提案通过。
 
 
 ## 3 - 介绍
@@ -28,7 +28,7 @@
 
 然而，由于这种模式依赖于大量的计算，这种机制可能会非常低效且不环保（算力消耗能源，需要硬件）。 这些依赖就是 PoW 方法的限制所在，最主要的就是扩展的成本。
 
-小蚁实现了一种委托的拜占庭容错共识算法，它借鉴了一些 PoS 的特点（小蚁股持有人需要对共识节点进行投票） 利用最小的资源来保障网络免受拜占庭故障的影响，同时也弥补了 PoS 的一些问题。该解决方案解决了与当前块链实现相关的性能和可扩展性问题，而不会对容错产生重大影响。
+NEO实现了一种委托的拜占庭容错共识算法，它借鉴了一些 PoS 的特点（NEO持有人需要对共识节点进行投票） 利用最小的资源来保障网络免受拜占庭故障的影响，同时也弥补了 PoS 的一些问题。该解决方案解决了与当前块链实现相关的性能和可扩展性问题，而不会对容错产生重大影响。
 
 
 
@@ -43,13 +43,13 @@
 
 ### **诚实的议长**
 
-  <p align="center"><img src="assets/n3.png" width="300"><br>
+  <p align="center"><img src="/assets/n3.png" width="300"><br>
 
  <b>图 1：</b> 一个 n = 3 的例子中存在一个不诚实的 <b>议员</b>。</p>
 
 在图 1 中，我们有一个诚实的 **议员** (50%)。两个 **议员** 从 **议长**  那里收到相同的消息，然而，由于其中一个 **文员** 不是诚实的，诚实的议员只能确定有不诚实的节点，但无法识别它是 **议长** 还是 **议员**。因为 **议员** 必须弃票，改变视图。
 
-  <p align="center"><img src="assets/n4.png" width="400"><br>
+  <p align="center"><img src="/assets/n4.png" width="400"><br>
 
  <b>图 2：</b> 一个 n =4 的例子中存在一个不诚实的 <b>议员</b>。</p>
 
@@ -59,13 +59,13 @@
 
 ### **不诚实的议长** 
 
-  <p align="center"><img src="assets/g3.png" width="300"><br> 
+  <p align="center"><img src="/assets/g3.png" width="300"><br> 
 
  <b>图 3：</b> 一个 n = 3 的例子中存在一个不诚实的 <b>议长</b>。</p>
 
 在图 3 中，不诚实的是  **议长**，这和图 1 中描述的案例有同样的结论。**议员** 无法确定哪个节点是不诚实的。
 
-  <p align="center"><img src="assets/g4.png" width="400"><br> 
+  <p align="center"><img src="/assets/g4.png" width="400"><br> 
 
  <b>图 4：</b> 一个 n = 4 的例子中存在一个不诚实的 <b>议长</b>。</p>
 
@@ -74,13 +74,13 @@
 
 ## 5 - 实际实施
 
-The practical implementation of DBFT in AntShares uses an iterative consensus method to guarantee that consensus is reached.  The performance of the algorithm is dependent on the fraction of honest nodes in the system.**Figure 5** depicts the
+The practical implementation of DBFT in NEO uses an iterative consensus method to guarantee that consensus is reached.  The performance of the algorithm is dependent on the fraction of honest nodes in the system.**Figure 5** depicts the
 expected iterations as a function of the fraction of dishonest nodes.  
 
 Note that the **Figure 5** does not extend below 66.66% **Consensus Node** honesty.  Between this critical point and 33% **Consensus Node** honesty, there is a 'No-Man's Land' where a consensus is unattainable.  Below 33.33% **Consensus Node** honesty, dishonest nodes (assuming they are aligned in consensus) are able to reach a consensus themselves and become the new point of truth in the system.
 
 
-<img src="assets/consensus.iterations.png" width="800">
+<img src="/assets/consensus.iterations.png" width="800">
 
 **Figure 5:** Monto-Carlo Simulation of the DBFT algorithm depicting the iterations required to reach consensus. {100 Nodes; 100,000 Simulated Blocks with random honest node selection}
 
@@ -119,7 +119,7 @@ Note that the **Figure 5** does not extend below 66.66% **Consensus Node** hones
 
 ### 5.2 - 要求
 
-**Within AntShares, there are three primary requirements for consensus fault tolerance:**
+**Within NEO, there are three primary requirements for consensus fault tolerance:**
 
 1. `s` **Congressmen** must reach a consensus about a transaction before a block can be committed.
 
@@ -134,7 +134,7 @@ Note that the **Figure 5** does not extend below 66.66% **Consensus Node** hones
 
 1. A **Consensus Node** broadcasts a transaction to the entire network with the sender's signatures.
 
-   <p align="center"><img src="assets/consensus1.png" width="450"><br> <b>Figure 6:</b> A <b>Consensus Node</b> receives a transaction and broadcasts it to the system. </p>
+   <p align="center"><img src="/assets/consensus1.png" width="450"><br> <b>Figure 6:</b> A <b>Consensus Node</b> receives a transaction and broadcasts it to the system. </p>
 
 2. **Consensus Nodes** log transaction data into local memory.
 
@@ -142,7 +142,7 @@ Note that the **Figure 5** does not extend below 66.66% **Consensus Node** hones
 
 4. The **Speaker** is identified.
 
-   <p align="center"><img src="assets/consensus2.png" width="450"><br> <b>Figure 7:</b> A <b>Speaker</b> has been identified and the view has been set. </p>
+   <p align="center"><img src="/assets/consensus2.png" width="450"><br> <b>Figure 7:</b> A <b>Speaker</b> has been identified and the view has been set. </p>
 
   **Wait** `t` seconds
 ​	
@@ -150,7 +150,7 @@ Note that the **Figure 5** does not extend below 66.66% **Consensus Node** hones
     <!-- -->
         <prepareRequest, h, k, p, bloc, [block]sigp>
 
-     <p align="center"><img src="assets/consensus3.png" width="450"><br> <b>Figure 8:</b> The <b>Speaker</b> mints a block proposal for review by the <b>Congressmen</b>. </p>
+     <p align="center"><img src="/assets/consensus3.png" width="450"><br> <b>Figure 8:</b> The <b>Speaker</b> mints a block proposal for review by the <b>Congressmen</b>. </p>
 
 6. The **Congressmen** receive the proposal and validate:
 
@@ -167,13 +167,13 @@ Note that the **Figure 5** does not extend below 66.66% **Consensus Node** hones
         <!-- -->
             <ChangeView, h,k,i,k+1>
         ​	
-           <p align="center"><img src="assets/consensus4.png" width="500"><br> <b>Figure 9:</b> The <b>Congressmen</b> review the block proposal and respond. </p>
+           <p align="center"><img src="/assets/consensus4.png" width="500"><br> <b>Figure 9:</b> The <b>Congressmen</b> review the block proposal and respond. </p>
 
 7. After receiving `s` number of 'prepareResponse' broadcasts, a **Congressman** reaches a consensus and publishes a block.
 
 8. The **Congressmen** sign the block.
 
-   <p align="center"><img src="assets/consensus5.png" width="500"><br> <b>Figure 10:</b> A consensus is reached and the approving <b>Congressmen</b> sign the block, binding it to the chain. </p>
+   <p align="center"><img src="/assets/consensus5.png" width="500"><br> <b>Figure 10:</b> A consensus is reached and the approving <b>Congressmen</b> sign the block, binding it to the chain. </p>
 
 9. When a **Consensus Node** receives a full block, current view data is purged, and a new round of consensus begins. 
   - `k = 0`
@@ -182,7 +182,7 @@ Note that the **Figure 5** does not extend below 66.66% **Consensus Node** hones
 
 **Note:**
 
- If after   (![timeout](assets/consensus.timeout.png) )  seconds on the same view without consensus:
+ If after   (![timeout](/assets/consensus.timeout.png) )  seconds on the same view without consensus:
   - **Consensus Node** broadcasts:
 
   <!-- -->
@@ -194,7 +194,7 @@ Note that the **Figure 5** does not extend below 66.66% **Consensus Node** hones
 ​	
 
 ## 6 - 引用
-1. [A Byzantine Fault Tolerance Algorithm for Blockchain](https://www.antshares.org/Files/A8A0E2.pdf)
+1. [A Byzantine Fault Tolerance Algorithm for Blockchain](https://www.neo.org/Files/A8A0E2.pdf)
 2. [Practical Byzantine Fault Tolerance](http://pmg.csail.mit.edu/papers/osdi99.pdf)
 3. [The Byzantine Generals Problem](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/The-Byzantine-Generals-Problem.pdf)
 
